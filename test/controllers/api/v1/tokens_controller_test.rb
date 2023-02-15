@@ -14,7 +14,7 @@ module Api
         assert_response :success
 
         json_response = JSON.parse(response.body)
-        assrte_not_nil json_response['token']
+        assert_not_nil json_response['token']
       end
 
       test 'should not get JWT token' do
