@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   has_secure_password
 
+  # Associations
   has_many :products, dependent: :destroy
 
   # Validations
