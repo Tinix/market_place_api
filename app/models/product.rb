@@ -1,5 +1,6 @@
-class Product < ApplicationRecord
+# frozen_string_literal: true
 
+class Product < ApplicationRecord
   # Associations
   belongs_to :user
 
