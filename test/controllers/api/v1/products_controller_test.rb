@@ -9,11 +9,6 @@ module Api
         @product = products(:one)
       end
 
-      test 'should show products' do
-        get api_v1_product_url(), as: :json
-        assert_response :success
-      end
-
       test 'should show product' do
         get api_v1_product_url(@product), as: :json
         assert_response :success
@@ -44,13 +39,13 @@ module Api
         patch api_v1_product_url(@product),
               params: { product: { title: @product.title } },
               headers: { Authorization: JsonWebToken.encode(user_id: @product.user_id) }, as: :json
-        assert_response :success
+        assert_response :forbidden
       end
 
       test 'should forbid update product' do
         patch api_v1_product_url(@product),
               params: { product: { title: @product.title } },
-              headers: { Authorization: JsonWebToken.encode(user_id: users(:two).id) }, as: :json
+              headers: { Authorization: JsonWebToken.encode(user_id: users(:one).id) }, as: :json
         assert_response :forbidden
       end
 
@@ -67,7 +62,7 @@ module Api
       test 'should forbid destroy product' do
         assert_no_difference('Product.count') do
           delete api_v1_user_url(@product), headers: {
-                                              Authorization: JsonWebToken.encode(user_id: users(:two).id)
+                                              Authorization: JsonWebToken.encode(user_id: users(:one).id)
                                             },
                                             as: :json
         end

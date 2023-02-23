@@ -47,7 +47,7 @@ module Api
       end
 
       def check_owner
-        head :forbidden unless @product.user_id == current_user&.id
+        head :forbidden unless @product.user_id == current_user
       end
 
       def set_product

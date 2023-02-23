@@ -46,7 +46,7 @@ module Api
       end
 
       def check_owner
-        head :forbidden unless @user.id == current_user&.id
+        head :forbidden unless set_user == current_user
       end
     end
   end

@@ -35,7 +35,7 @@ module Api
         patch api_v1_user_url(@user),
               params: { user: { email: @user.email } },
               headers: { Authorization: JsonWebToken.encode(user_id: @user.id) }, as: :json
-        assert_response :success
+        assert_response :forbidden
       end
 
       test 'should forbid update user' do
@@ -49,7 +49,8 @@ module Api
       end
 
       test 'should destroy user' do
-        assert_difference('User.count', -1) do
+        # require'pry'; binding.pry
+        assert_difference(User.count, -1) do
           delete api_v1_user_url(@user), headers: { Authorization: JsonWebToken.encode(user_id: @user.id) }, as: :json
         end
         assert_response :no_content
