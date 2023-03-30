@@ -50,7 +50,7 @@ module Api
       end
 
       test 'should destroy product' do
-        assert_difference('Product.count', -1) do
+        assert_difference(@product.all.count, -1) do
           delete api_v1_product_url(@product), headers: {
                                                  Authorization: JsonWebToken.encode(user_id: @product.user_id)
                                                },

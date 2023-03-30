@@ -47,3 +47,4 @@ gem 'jwt', '~> 2.7'
 gem 'pry', '~> 0.14.2'
 gem 'pry-rails', '~> 0.3.9'
 gem "faker", "~> 3.1"
+gem "fast_jsonapi", "~> 1.5"
