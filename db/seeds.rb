@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -11,9 +12,9 @@ Product.delete_all
 User.delete_all
 
 5.times do
-	user = User.create! email: Faker::Internet.email, 
-		password_digest: 'test1234'
-	puts "Created a new user: #{user.id} #{user.email}"
+  user = User.create! email: Faker::Internet.email,
+                      password_digest: 'test1234'
+  puts "Created a new user: #{user.id} #{user.email}"
 
   2.times do
     product = Product.create!(
@@ -25,4 +26,3 @@ User.delete_all
     puts "Created a brand new product: #{product.title}"
   end
 end
-
